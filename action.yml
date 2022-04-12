@@ -1,0 +1,30 @@
+name: 'S3 Recursive Folder Downloader'
+description: ''
+author: 'Qizuna'
+branding:
+  icon: 'download-cloud'
+  color: 'orange'
+inputs:
+  endpoint:
+    required: true
+    description: 'Endpoint URL (https://...)'
+  region:
+    required: true
+  accessKeyId:
+    required: true
+  secretAccessKey:
+    required: true
+  Bucket:
+    required: true
+    description: 'Bucket name'
+  Prefix:
+    required: false
+    description: 'Remote source folder path'
+    default: '/'
+  destination:
+    required: false
+    description: 'Local destination folder path'
+    default: '.'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

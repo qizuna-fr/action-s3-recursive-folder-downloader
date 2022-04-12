@@ -1,0 +1,46 @@
+{
+  "name": "typescript-action",
+  "version": "0.0.0",
+  "author": "Qizuna",
+  "license": "MIT",
+  "private": true,
+  "description": "",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write '**/*.ts'",
+    "format-check": "prettier --check '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt",
+    "test": "jest",
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qizuna-fr/action-s3-recursive-folder-downloader.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@aws-sdk/client-s3": "^3.66.0",
+    "aws-sdk": "^2.1110.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "@typescript-eslint/parser": "^5.17.0",
+    "@vercel/ncc": "^0.33.3",
+    "dotenv": "^16.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-github": "^4.3.2",
+    "eslint-plugin-jest": "^26.1.3",
+    "jest": "^27.5.1",
+    "js-yaml": "^4.1.0",
+    "prettier": "2.6.1",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
+  }
+}
