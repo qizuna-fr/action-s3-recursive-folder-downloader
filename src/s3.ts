@@ -34,7 +34,9 @@ export async function download(config: Config, options: ListObjectsV2Request, de
   if (list && list.Contents) {
     for (const element of list.Contents) {
       if (element && element.Key) {
-        const fullname = path.join(destination, element.Key)
+        const separator = options.Prefix?.endsWith('/') ? '/' : ''
+        const filename = element.Key.replace(String(options.Prefix) + separator, '')
+        const fullname = path.join(destination, filename)
         if (element.Key.endsWith('/')) {
           fs.mkdirSync(fullname, {recursive: true})
         } else {

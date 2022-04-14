@@ -39,19 +39,18 @@ describe('Download "dev" folder', () => {
         expect(isImage('/this/file/does/not/exists')).toBe('1')
       })
       test('If file is not an image', () => {
-        const file = path.join(output, 'dev', 'test.txt')
+        const file = path.join(output, 'test.txt')
         cp.execSync(`echo "I am a text file" > ${file}`)
         expect(isImage(file)).toBe('1')
       })
     })
 
     test('"logo.png" should be an image', () => {
-      expect(fs.existsSync(path.join(output, 'dev', 'images', 'logo.png'))).toBeTruthy()
-      const file = path.join(output, 'dev', 'images', 'logo.png')
+      const file = path.join(output, 'images', 'logo.png')
       expect(isImage(file)).toBe('0')
     })
     test('"qizuna-logo-small.jpg" should be an image', () => {
-      const file = path.join(output, 'dev', 'images', 'qizuna-logo-small.jpg')
+      const file = path.join(output, 'images', 'qizuna-logo-small.jpg')
       expect(isImage(file)).toBe('0')
     })
   })

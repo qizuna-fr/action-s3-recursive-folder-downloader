@@ -124,6 +124,7 @@ class Config {
 }
 exports.Config = Config;
 function download(config, options, destination) {
+    var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const S3 = new client_s3_1.S3Client({
             endpoint: config.endpoint,
@@ -134,7 +135,9 @@ function download(config, options, destination) {
         if (list && list.Contents) {
             for (const element of list.Contents) {
                 if (element && element.Key) {
-                    const fullname = path.join(destination, element.Key);
+                    const separator = ((_a = options.Prefix) === null || _a === void 0 ? void 0 : _a.endsWith('/')) ? '/' : '';
+                    const filename = element.Key.replace(String(options.Prefix) + separator, '');
+                    const fullname = path.join(destination, filename);
                     if (element.Key.endsWith('/')) {
                         fs.mkdirSync(fullname, { recursive: true });
                     }
